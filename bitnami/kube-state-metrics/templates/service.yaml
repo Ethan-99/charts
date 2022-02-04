@@ -42,4 +42,10 @@ spec:
       {{- else if eq .Values.service.type "ClusterIP" }}
       nodePort: null
       {{- end }}
+    {{- if .Values.selfMonitor.enabled }}
+    - name: "telemetry"
+      protocol: TCP
+      port: {{ .Values.selfMonitor.telemetryPort }}
+      targetPort: {{ .Values.selfMonitor.telemetryPort }}
+    {{- end }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}

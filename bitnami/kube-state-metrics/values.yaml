@@ -366,3 +366,13 @@ serviceMonitor:
   ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
   ##
   metricRelabelings: []
+##
+## Self monitor with telemetry configuration
+##
+selfMonitor:
+  ## @param selfMonitor.enabled Creates an additional port in the service for telemetry
+  ##
+  enabled: false
+  ## @param selfMonitor.telemetryPort defines the telemetry port number
+  ##
+  telemetryPort: 8081

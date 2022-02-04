@@ -166,6 +166,11 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+            {{- if .Values.selfMonitor.enabled }}
+            - name: "telemetry"
+              containerPort: {{ .Values.selfMonitor.telemetryPort }}
+              protocol: TCP
+            {{- end }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
